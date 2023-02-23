@@ -3,9 +3,6 @@
 
 A mobile application built using Flutter that notifies patients of nearby hospitals and the estimated time of arrival of the ambulance.It provides the hospital as well as ambulance drivers with critical information such as the patient’s location and enables effective GPS route management via real time traffic information on scheduled routes.
 <br>
-<p align="center">
-   <img align="center" height="500" src="https://github.com/lakshmi-warrier/ambulance-tracker/blob/main/screenshots/Welcome_page.jpg"/>
- </p>
  
 ## Why CareOnGo?
 Other similar applications in the market focus more on communication between management and ambulance fleet, whereas CareOnGo also incorporates features that keeps patients in the loop.
@@ -24,7 +21,6 @@ CareOnGo ensures easy and accurate tracking and plays an integral part in the am
 
 <table>
      <tr>
-          <td><img height="500" src="https://github.com/lakshmi-warrier/ambulance-tracker/blob/main/screenshots/SignUp_page.jpg" /><br /><center><b>Sign-Up Screen</b></center></td>
           <td><img height="500" src="https://github.com/lakshmi-warrier/ambulance-tracker/blob/main/screenshots/Login_page.jpg" /><br /><center><b>Login Screen</b></center></td>
           <td><img height="500" src="https://github.com/lakshmi-warrier/ambulance-tracker/blob/main/screenshots/Role_Page.jpg" /><br /><center><b>Role Screen</b></center></td>
      </tr>
