@@ -26,7 +26,7 @@ class Body extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(" CareOnGo",
+            Text(" CareOnGo ",
                 style: TextStyle(
                     fontSize: 50,
                     fontWeight: FontWeight.bold,

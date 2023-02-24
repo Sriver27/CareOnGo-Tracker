@@ -1,10 +1,15 @@
 // @dart=2.9
-import 'package:ambulance_tracker/Animation/FadeAnimation.dart';
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/Welcome/welcome_screen.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key key}) : super(key: key);
