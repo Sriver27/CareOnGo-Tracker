@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "384191733804",
-    "project_id": "ambulance-tracker-a40ed",
-    "storage_bucket": "ambulance-tracker-a40ed.appspot.com"
+    "project_number": "1099442422768",
+    "project_id": "careongo-1f726",
+    "storage_bucket": "careongo-1f726.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:384191733804:android:2994f263ee075f54f4f189",
+        "mobilesdk_app_id": "1:1099442422768:android:15286094fc06616c955335",
         "android_client_info": {
           "package_name": "com.example.ambulance_tracker"
         }
       },
       "oauth_client": [
         {
-          "client_id": "384191733804-dfoqr62i4gtaohs5lk97jrps3chf98e0.apps.googleusercontent.com",
+          "client_id": "1099442422768-5pe9224fplneoijpresgl827cb40vamt.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCLPzVUYpJHdhg9072LUO5qFrijGgAPkrU"
+          "current_key": "AIzaSyAOadTMRDr1gDp7_H-yuklsw0YPQVw4nRY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "384191733804-dfoqr62i4gtaohs5lk97jrps3chf98e0.apps.googleusercontent.com",
+              "client_id": "1099442422768-5pe9224fplneoijpresgl827cb40vamt.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
