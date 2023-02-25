@@ -15,6 +15,7 @@ String currLoc = "";
 var details = [];
 String date_time = "", address = "";
 var loc = [];
+String hospitalName = "";
 
 class _PatientPageState extends State<PatientPage> {
   final TextEditingController _input1Controller = TextEditingController();
@@ -122,9 +123,19 @@ class _PatientPageState extends State<PatientPage> {
                     IconButton(
                         icon: Icon(Icons.check),
                         onPressed: () {
+                          hospitalName = "Hospital " + i.toString();
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  PatientInfoPage()));
+                                  PatientInfoPage(
+                                      hospitalName:
+                                          "Hospital " + i.toString())));
+                          // Fluttertoast.showToast(
+                          //     msg:
+                          //         "Hospital chosen, you'll be notified about the ambulance",
+                          //     toastLength: Toast.LENGTH_SHORT,
+                          //     gravity: ToastGravity.CENTER,
+                          //     textColor: Colors.white,
+                          //     fontSize: 16.0);
                         }),
                     IconButton(
                         icon: Icon(Icons.close),

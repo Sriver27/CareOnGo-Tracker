@@ -1,4 +1,5 @@
 import 'package:ambulance_tracker/functions/function.dart';
+import 'package:ambulance_tracker/screens/nearby_driver.dart';
 import 'package:ambulance_tracker/screens/patient_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -6,20 +7,19 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class PatientInfoPage extends StatefulWidget {
-  // const PatientInfoPage({super.key});
-  String hospitalName;
-  PatientInfoPage({required this.hospitalName});
-
+class DriverBooking extends StatefulWidget {
+  String driverName;
+  DriverBooking({required this.driverName});
   @override
-  _PatientInfoPageState createState() => _PatientInfoPageState();
+  _DriverBookingState createState() => _DriverBookingState();
 }
 
-class _PatientInfoPageState extends State<PatientInfoPage> {
+class _DriverBookingState extends State<DriverBooking> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
   final TextEditingController _incidentController = TextEditingController();
   final TextEditingController _locationController = TextEditingController();
+  final TextEditingController _hospitalController = TextEditingController();
 
   @override
   void dispose() {
@@ -74,6 +74,14 @@ class _PatientInfoPageState extends State<PatientInfoPage> {
               ),
             ),
             SizedBox(height: 16.0),
+            TextField(
+              controller: _hospitalController,
+              decoration: InputDecoration(
+                labelText: 'Hospital Name',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
                 // Send action
@@ -81,6 +89,7 @@ class _PatientInfoPageState extends State<PatientInfoPage> {
                 final age = int.tryParse(_ageController.text);
                 final incident = _incidentController.text;
                 final location = _locationController.text;
+                final hospitalName = _hospitalController.text;
 
                 print(name);
                 print(age);
@@ -90,9 +99,10 @@ class _PatientInfoPageState extends State<PatientInfoPage> {
                     age != null &&
                     age > 0 &&
                     location.isNotEmpty &&
-                    incident.isNotEmpty) {
-                  createData(
-                      'Hospital', hospitalName, name, incident, location, age);
+                    incident.isNotEmpty &&
+                    hospitalName.isNotEmpty) {
+                  instantDriver('Instant Driver', driverName, name, incident,
+                      location, hospitalName, age);
 
                   // Do something with the data
                   Fluttertoast.showToast(
@@ -102,7 +112,7 @@ class _PatientInfoPageState extends State<PatientInfoPage> {
                       gravity: ToastGravity.CENTER,
                       textColor: Colors.white,
                       fontSize: 16.0);
-                  Navigator.pop(context, {'name': name, 'age': age});
+                  Navigator.pop(context, null);
                 }
               },
               child: Text('Send'),

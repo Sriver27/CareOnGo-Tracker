@@ -1,6 +1,7 @@
 // @dart=2.9
 
 import 'package:ambulance_tracker/screens/patient_page.dart';
+import 'package:ambulance_tracker/screens/service_required.dart';
 import 'package:flutter/material.dart';
 
 import 'driver_page.dart';
@@ -27,56 +28,49 @@ class ChoicePage extends StatelessWidget {
                         left: 30,
                         width: 80,
                         height: 200,
-                        child: 
-                          
-                            Container(
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/light-1.png'))),
-                            ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image:
+                                      AssetImage('assets/images/light-1.png'))),
+                        ),
                       ),
                       Positioned(
                         left: 140,
                         width: 80,
                         height: 150,
-                        child: 
-                          
-                            Container(
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/light-2.png'))),
-                            ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image:
+                                      AssetImage('assets/images/light-2.png'))),
+                        ),
                       ),
                       Positioned(
                         right: 40,
                         top: 40,
                         width: 80,
                         height: 150,
-                        child: 
-                         
-                            Container(
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/clock.png'))),
-                            ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image:
+                                      AssetImage('assets/images/clock.png'))),
+                        ),
                       ),
                       Positioned(
-                        child: 
-                            Container(
-                              margin: EdgeInsets.only(top: 50),
-                              child: Center(
-                                child: Text(
-                                  "Role",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 40,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
+                        child: Container(
+                          margin: EdgeInsets.only(top: 50),
+                          child: Center(
+                            child: Text(
+                              "Role",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.bold),
                             ),
+                          ),
+                        ),
                       )
                     ],
                   ),
@@ -85,103 +79,96 @@ class ChoicePage extends StatelessWidget {
                   padding: EdgeInsets.all(20.0),
                   child: Column(
                     children: <Widget>[
-                     
-                          Container(
-                            padding: EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Color.fromRGBO(143, 148, 251, .2),
-                                      blurRadius: 20.0,
-                                      offset: Offset(0, 10))
-                                ]),
-                          ),
+                      Container(
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Color.fromRGBO(143, 148, 251, .2),
+                                  blurRadius: 20.0,
+                                  offset: Offset(0, 10))
+                            ]),
+                      ),
                       SizedBox(
                         height: 30,
                       ),
-                      
-                          Container(
-                            height: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                gradient: LinearGradient(colors: [
-                                  Color.fromRGBO(143, 148, 251, 1),
-                                  Color.fromRGBO(143, 148, 251, .6),
-                                ])),
-                            child: Center(
-                              child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (BuildContext context) =>
-                                                PatientPage()));
-                                  },
-                                  child: Text(
-                                    "User",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  )),
-                            ),
-                          ),
+                      Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: LinearGradient(colors: [
+                              Color.fromRGBO(143, 148, 251, 1),
+                              Color.fromRGBO(143, 148, 251, .6),
+                            ])),
+                        child: Center(
+                          child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        ServiceRequired()));
+                              },
+                              child: Text(
+                                "User",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              )),
+                        ),
+                      ),
                       SizedBox(
                         height: 30,
                       ),
-                    
-                          Container(
-                            height: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                gradient: LinearGradient(colors: [
-                                  Color.fromRGBO(143, 148, 251, 1),
-                                  Color.fromRGBO(143, 148, 251, .6),
-                                ])),
-                            child: Center(
-                              child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (BuildContext context) =>
-                                                HospitalPage()));
-                                  },
-                                  child: Text(
-                                    "Hospital Reception",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  )),
-                            ),
-                          ),
+                      Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: LinearGradient(colors: [
+                              Color.fromRGBO(143, 148, 251, 1),
+                              Color.fromRGBO(143, 148, 251, .6),
+                            ])),
+                        child: Center(
+                          child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        HospitalPage()));
+                              },
+                              child: Text(
+                                "Hospital Reception",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              )),
+                        ),
+                      ),
                       SizedBox(
                         height: 30,
                       ),
-                     
-                          Container(
-                            height: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                gradient: LinearGradient(colors: [
-                                  Color.fromRGBO(143, 148, 251, 1),
-                                  Color.fromRGBO(143, 148, 251, .6),
-                                ])),
-                            child: Center(
-                              child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (BuildContext context) =>
-                                                DriverPage()));
-                                  },
-                                  child: Text(
-                                    "Driver",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  )),
-                            ),
-                          ),
+                      Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: LinearGradient(colors: [
+                              Color.fromRGBO(143, 148, 251, 1),
+                              Color.fromRGBO(143, 148, 251, .6),
+                            ])),
+                        child: Center(
+                          child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        DriverPage()));
+                              },
+                              child: Text(
+                                "Driver",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              )),
+                        ),
+                      ),
                       SizedBox(
                         height: 70,
                       ),

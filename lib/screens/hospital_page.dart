@@ -1,4 +1,5 @@
 import 'package:ambulance_tracker/screens/new_driver_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -53,18 +54,6 @@ class _HospitalPageState extends State<HospitalPage> {
                           SizedBox(
                             height: 20,
                           ),
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: RichText(
-                              text: TextSpan(
-                                  text: "You have got 3 requests\ncurrently!",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  )),
-                            ),
-                          ),
                           SizedBox(
                             height: 30,
                           ),
@@ -72,39 +61,50 @@ class _HospitalPageState extends State<HospitalPage> {
                       ),
                       Container(
                         height: 250,
-                        child: PageView(
-                          controller: PageController(viewportFraction: 0.9),
-                          scrollDirection: Axis.horizontal,
-                          pageSnapping: true,
-                          children: <Widget>[
-                            _buildRequestsCard(
-                              title: "Name: Natasha",
-                              subject: "Location",
-                              text:
-                                  "15th Main Rd, West Of Chord Road, 3rd Stage, Rajajinagar Bengaluru, Karnataka 560010, India",
-                              image: Image.asset('images/background.png'),
-                            ),
-                            _buildRequestsCard(
-                              title: "Name: Tony",
-                              subject: "Location",
-                              text:
-                                  "Splendid Plaza, Koramangala, 5th Block, Near BDA Complex Koramangala 3 Block, Koramangala Bengaluru, Karnataka 560034, India",
-                              image: Image.network(
-                                'https://i0.wp.com/cssscript.com/wp-content/uploads/2018/03/Simple-Location-Picker.png?fit=561%2C421&ssl=1',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            _buildRequestsCard(
-                              title: "Name: Evan",
-                              subject: "Location",
-                              text:
-                                  "Near Home Town Super market, Marathahalli Bridge Marathahalli-Sarjapur Outer Ring Rd Marathahalli Bengaluru, Karnataka 560037 ",
-                              image: Image.network(
-                                  'https://i0.wp.com/cssscript.com/wp-content/uploads/2018/03/Simple-Location-Picker.png?fit=561%2C421&ssl=1'),
-                            )
-                          ],
+                        child: StreamBuilder<QuerySnapshot>(
+                          stream: FirebaseFirestore.instance
+                              .collection('Hospital')
+                              .snapshots(),
+                          builder: (context, patientSnapshot) {
+                            if (patientSnapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            } else {
+                              final patientDocs = patientSnapshot.data!.docs;
+                              return ListView.builder(
+                                  itemCount: patientDocs.length,
+                                  itemBuilder: (context, index) {
+                                    return Column(
+                                      children: [
+                                        Text(
+                                            "You have ${patientDocs.length} no of patients"),
+                                        Card(
+                                          elevation: 10,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(16.0),
+                                            child: SizedBox(
+                                              width: 200,
+                                              child: Column(children: [
+                                                Text(
+                                                    " Name : ${patientDocs[index]['name']}"),
+                                                Text(
+                                                    "Location : ${patientDocs[index]['location']}"),
+                                                Text(
+                                                    "Incident : ${patientDocs[index]['incident']}"),
+                                                // Text(petDocs[index]['age']),
+                                              ]),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  });
+                            }
+                          },
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ),
