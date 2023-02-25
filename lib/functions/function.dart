@@ -8,3 +8,9 @@ Future createData(String collName, docName, name, inc, loc, int age) async {
       .set({'name': name, 'incident': inc, 'location': loc, 'age': age});
   print("Database Updated");
 }
+
+Future createDriver(String collName, docName, regid, exp, status) async {
+  await FirebaseFirestore.instance.collection(collName).doc(docName).set(
+      {'name': docName, 'Reg Id': regid, 'experience': exp, 'status': status});
+  print("Database Updated");
+}

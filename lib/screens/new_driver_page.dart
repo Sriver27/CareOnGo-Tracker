@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:ambulance_tracker/functions/function.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -175,6 +176,8 @@ class _NewDriversCodeState extends State<NewDriversCode> {
                 ElevatedButton(
                     child: Text("Add Driver"),
                     onPressed: () {
+                      createDriver('Drivers', nameController.text,
+                          visitorsController.text, timeController.text,'available');
                       Fluttertoast.showToast(
                           msg: "Driver added",
                           toastLength: Toast.LENGTH_SHORT,
