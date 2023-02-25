@@ -1,3 +1,4 @@
+import 'package:ambulance_tracker/screens/chatbot.dart';
 import 'package:ambulance_tracker/screens/patient_info.dart';
 import 'package:ambulance_tracker/services/MapUtils.dart';
 import 'package:ambulance_tracker/services/current_location.dart';
@@ -37,54 +38,69 @@ class _PatientPageState extends State<PatientPage> {
     }
 
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color.fromRGBO(143, 148, 251, 1),
-        ),
-        backgroundColor: Color.fromRGBO(222, 224, 252, 1),
-        body: Center(
-            child: Column(
-                //mainAxisAlignment: MainAxisAlignment.center,
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(143, 148, 251, 1),
+      ),
+      backgroundColor: Color.fromRGBO(222, 224, 252, 1),
+      body: Center(
+          child: Column(
+              //mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+            ElevatedButton(
+                child: Text("Refresh location"),
+                onPressed: () async {
+                  currentLoc();
+
+                  date_time = currLoc.split("{}")[0];
+                  address = currLoc.split("{}")[2];
+                  loc = currLoc.split("{}")[1].split(" , ");
+
+                  setState(() {
+                    currLoc;
+                    date_time;
+                    address;
+                    loc;
+                  });
+                }),
+            Card(
+              child: Column(
+                //mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-              ElevatedButton(
-                  child: Text("Refresh location"),
-                  onPressed: () async {
-                    currentLoc();
-
-                    date_time = currLoc.split("{}")[0];
-                    address = currLoc.split("{}")[2];
-                    loc = currLoc.split("{}")[1].split(" , ");
-
-                    setState(() {
-                      currLoc;
-                      date_time;
-                      address;
-                      loc;
-                    });
-                  }),
-              Card(
+                  Text("Date: " + date_time),
+                  Text("Address: " + address),
+                  //Text("Location: " + loc[0] + ", " + loc[1]),
+                ],
+              ),
+            ),
+            ElevatedButton(
+                child: Text("See nearby hospitals in GMap"),
+                onPressed: () async {
+                  MapUtils.openMap(double.parse(loc[0]), double.parse(loc[1]));
+                }),
+            Container(
+              child: SingleChildScrollView(
                 child: Column(
-                  //mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text("Date: " + date_time),
-                    Text("Address: " + address),
-                    //Text("Location: " + loc[0] + ", " + loc[1]),
-                  ],
+                  children: getHosps(),
                 ),
               ),
-              ElevatedButton(
-                  child: Text("See nearby hospitals in GMap"),
-                  onPressed: () async {
-                    MapUtils.openMap(
-                        double.parse(loc[0]), double.parse(loc[1]));
-                  }),
-              Container(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: getHosps(),
-                  ),
-                ),
-              )
-            ])));
+            )
+          ])),
+      floatingActionButton: Stack(
+        children: <Widget>[
+          Positioned(
+            bottom: 10.0,
+            right: 10.0,
+            child: FloatingActionButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => PatientChatbot()));
+              },
+              child: Icon(Icons.chat),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   void currentLoc() async {
