@@ -1,3 +1,4 @@
+import 'package:ambulance_tracker/screens/patient_info.dart';
 import 'package:ambulance_tracker/services/MapUtils.dart';
 import 'package:ambulance_tracker/services/current_location.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,8 @@ String date_time = "", address = "";
 var loc = [];
 
 class _PatientPageState extends State<PatientPage> {
+  final TextEditingController _input1Controller = TextEditingController();
+  final TextEditingController _input2Controller = TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -90,6 +93,14 @@ class _PatientPageState extends State<PatientPage> {
     loc = currLoc.split("{}")[1].split(" , ");
   }
 
+  void _submit() {
+    String input1Value = _input1Controller.text;
+    String input2Value = _input2Controller.text;
+    print('Input 1 value: $input1Value');
+    print('Input 2 value: $input2Value');
+    Navigator.pop(context);
+  }
+
   List<Widget> getHosps() {
     List<Widget> lst = [];
     for (int i = 1; i <= 4; i++) {
@@ -111,13 +122,9 @@ class _PatientPageState extends State<PatientPage> {
                     IconButton(
                         icon: Icon(Icons.check),
                         onPressed: () {
-                          Fluttertoast.showToast(
-                              msg:
-                                  "Hospital chosen, you'll be notified about the ambulance",
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.CENTER,
-                              textColor: Colors.white,
-                              fontSize: 16.0);
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  PatientInfoPage()));
                         }),
                     IconButton(
                         icon: Icon(Icons.close),
