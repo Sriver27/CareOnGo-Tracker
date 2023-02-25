@@ -5,8 +5,11 @@ import 'package:flutter/material.dart';
 
 import 'screens/Welcome/welcome_screen.dart';
 
-void main() async {
+Future<void> main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
+
   WidgetsFlutterBinding.ensureInitialized();
+   await Firebase.initializeApp();
   
   runApp(MyApp());
 }
